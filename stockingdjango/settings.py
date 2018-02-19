@@ -18,8 +18,8 @@ DATABASES = {
    "ENGINE": "django.db.backends.postgresql_psycopg2", #one of those should work
    'ENGINE': 'django.db.backends.postgresql',   #one of those should work
    "NAME": 'PostgreSQL 10',
-   'USER': '<your_postgres_database_username>',
-   'PASSWORD': '<your_postgres_database_password>',
+   'USER': 'postgres',
+   'PASSWORD': 'Waluigi6!',
    "HOST": "localhost", 
    "PORT": "5432",
    'OPTIONS': {
@@ -32,7 +32,7 @@ DEBUG = True
 TEMPLATES = [
 {
     'BACKEND': 'django.template.backends.django.DjangoTemplates',
-    'DIRS': ['templates'],
+    'DIRS': [os.path.join(BASE_DIR, 'stocking/templates'),'templates'],
     'APP_DIRS': True,
     'OPTIONS': {
         'debug': DEBUG,
@@ -45,6 +45,7 @@ TEMPLATES = [
     },
 }
 ]
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -80,6 +81,12 @@ ROOT_URLCONF = 'stockingdjango.urls'
 
 WSGI_APPLICATION = 'stockingdjango.wsgi.application'
 
+
+# Database
+# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
+#import dj_database_url
+#DATABASES['default'] =  dj_database_url.config()
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -102,8 +109,9 @@ STATIC_URL = '/static/'
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
-#DATABASES['default'] = dj_database_url.config(default='postgres://<your_postgres_username>:<your_postgres_password>@localhost/<postgres_database_name>')
+#DATABASES['default'] = dj_database_url.config(default='postgres://postgres:Waluigi6!@localhost/test')
 
+#DATABASES['default'] = dj_database_url.config(default='postgres://bsmdtcly:s7nnVJnb16OBIyc2aFbE2ecHcb-nNKMs@hanno-01.db.elephantsql.com:5432/bsmdtcly')
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
@@ -118,3 +126,5 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+LOGIN_REDIRECT_URL = '/stocks/home'
+LOGIN_URL='/auth/login/'
