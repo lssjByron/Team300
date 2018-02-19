@@ -1,1 +1,1 @@
-web: gunicorn simpledjango.wsgi --workers 2
+web: gunicorn stockingdjango.wsgi --workers 2

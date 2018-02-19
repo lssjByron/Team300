@@ -7,9 +7,9 @@
 
 
 #Change this values for django superuser
-USER="lssjByron"
+USER="test"
 MAIL="broby2@uwo.ca"
-PASS="Waluigi6!"
+PASS="test"
 
 if [ -z "$VCAP_APP_PORT" ];
   then SERVER_PORT=5000;
@@ -18,7 +18,7 @@ fi
 
 echo [$0] port is------------------- $SERVER_PORT
 python manage.py makemigrations
-python manage.py migrate
+python manage.py migrate --no-input
 echo "from django.contrib.auth.models import User; User.objects.create_superuser('${USER}', '${MAIL}', '${PASS}')" | python manage.py shell
 
 echo [$0] Starting Django Server...

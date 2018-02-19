@@ -1,5 +1,5 @@
 applications:
-- name: DeployDjango
+- name: DKITYSI
   memory: 256M
 # This is command provided by cf -c option  
   command: bash ./run.sh
@@ -9,8 +9,9 @@ applications:
   buildpack: python_buildpack
   path: .
 declared-services:
-  <bluemix_elephantSQL_database_name>:
+  #your database server name will be an elephantsql
+  <your_database_server_name>:
     label: postgresql
     plan: turtle
 services:
-  - <bluemix_elephantSQL_database_name>
+  - <your_database_server_name>
