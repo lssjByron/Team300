@@ -19,7 +19,7 @@ DATABASES = {
    'ENGINE': 'django.db.backends.postgresql',   #one of those should work
    "NAME": 'PostgreSQL 10',
    'USER': 'postgres',
-   'PASSWORD': 'Waluigi6!',
+   'PASSWORD': 'pass',
    "HOST": "localhost", 
    "PORT": "5432",
    'OPTIONS': {
@@ -109,7 +109,7 @@ STATIC_URL = '/static/'
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
-#DATABASES['default'] = dj_database_url.config(default='postgres://postgres:Waluigi6!@localhost/test')
+#DATABASES['default'] = dj_database_url.config(default='postgres://postgres:pass@localhost/test')
 
 #DATABASES['default'] = dj_database_url.config(default='postgres://bsmdtcly:s7nnVJnb16OBIyc2aFbE2ecHcb-nNKMs@hanno-01.db.elephantsql.com:5432/bsmdtcly')
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
