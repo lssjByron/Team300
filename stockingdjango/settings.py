@@ -18,8 +18,8 @@ DATABASES = {
    "ENGINE": "django.db.backends.postgresql_psycopg2", #one of those should work
    'ENGINE': 'django.db.backends.postgresql',   #one of those should work
    "NAME": 'PostgreSQL 10',
-   'USER': '<your_postgres_database_username>',
-   'PASSWORD': '<your_postgres_database_password>',
+   'USER': 'postgre',
+   'PASSWORD': '<your_password>',
    "HOST": "localhost", 
    "PORT": "5432",
    'OPTIONS': {
