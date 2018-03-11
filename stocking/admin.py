@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from .models import Checker
+from .models import Stocks
 
-admin.site.register(Checker)
+admin.site.register(Stocks)

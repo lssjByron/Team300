@@ -13,18 +13,15 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 DATABASES = {
-  "default": 
+  'default': 
   {
-   "ENGINE": "django.db.backends.postgresql_psycopg2", #one of those should work
+   'ENGINE': 'django.db.backends.postgresql_psycopg2', #one of those should work
    'ENGINE': 'django.db.backends.postgresql',   #one of those should work
-   "NAME": 'PostgreSQL 10',
-   'USER': 'postgres',
-   'PASSWORD': 'Waluigi6!',
-   "HOST": "localhost", 
-   "PORT": "5432",
-   'OPTIONS': {
-            'autocommit': True,
-        },
+   'NAME': 'compose',
+   'USER': 'admin',
+   'PASSWORD': 'POSWPTXEIQXTOTVR',
+   'HOST': 'sl-us-south-1-portal.18.dblayer.com', 
+   'PORT': '37081',
   }
 }
 
@@ -106,12 +103,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
-#DATABASES['default'] = dj_database_url.config(default='postgres://postgres:Waluigi6!@localhost/test')
-
-#DATABASES['default'] = dj_database_url.config(default='postgres://bsmdtcly:s7nnVJnb16OBIyc2aFbE2ecHcb-nNKMs@hanno-01.db.elephantsql.com:5432/bsmdtcly')
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
