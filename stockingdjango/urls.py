@@ -14,16 +14,26 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-#from django.urls import path
 from django.contrib import admin
-from stocking import views
 from django.contrib.auth import views as auth_views
-
+from accounts import views as accounts_views
+from boards import views
 urlpatterns = [
-    url(r'^login/$', auth_views.login, name='login'),
-    url(r'^logout/$', auth_views.logout, name='logout'),
+    #url(r'^signup/', signup_views.signup),
+    #url(r'^$', signup_views.signup),
+    url(r'^$',views.home,name='home'),
+    url(r'^signup/$', accounts_views.signup, name='signup'),
+    url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+    url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
+   # url(r'^boards/(?P<pk>\d+)/$', views.board_topics, name='board_topics'),
+    #url(r'^boards/(?P<pk>\d+)/new/$', views.new_topic, name='new_topic'),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.home),
-    url(r'^stocks/home$', views.home),
-#    url(r'^date/', views.current_datetime),
 ]
+
+
+
+
+
+
+
+
