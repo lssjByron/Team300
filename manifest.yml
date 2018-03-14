@@ -1,5 +1,5 @@
 applications:
-- name: DKITYSI
+- name: DKITYSI2
   memory: 256M
 # This is command provided by cf -c option  
   command: bash ./run.sh
@@ -9,8 +9,9 @@ applications:
   buildpack: python_buildpack
   path: .
 declared-services:
-  cf-django-pgsql:
+  #your database server name will be an stockdb
+  stockdb:
     label: postgresql
-    plan: turtle
+    plan: 100
 services:
-  - cf-django-pgsql
+  - stockdb
