@@ -1,5 +1,6 @@
+from __future__ import unicode_literals
 from django.contrib import admin
+from django.contrib import admin
+from .models import Stocks
 
-from .models import Checker
-
-admin.site.register(Checker)
+admin.site.register(Stocks)

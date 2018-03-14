@@ -61,8 +61,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'stocking',
-    'accounts',
-    'boards',
+    'widget_tweaks',
 )
 
 MIDDLEWARE_CLASSES = (

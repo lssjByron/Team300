@@ -6,6 +6,9 @@ from stocking.forms import SignUpForm
 #from django.http import HttpResponse
 
 # def home(request):
+def home(request):
+    return render(request, 'stocks/home.html')
+
 # 	return render(request,'stocks/home.html')
 def signup(request):
 	if request.method == 'POST':
