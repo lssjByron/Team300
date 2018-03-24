@@ -1,5 +1,5 @@
 applications:
-- name: DKITYSI
+- name: DKITYSI2
   memory: 256M
 # This is command provided by cf -c option  
   command: bash ./run.sh
@@ -9,9 +9,9 @@ applications:
   buildpack: python_buildpack
   path: .
 declared-services:
-  #your database server name will be an elephantsql
-  <your_database_server_name>:
+  #your database server name will be an stockdb
+  stockdb:
     label: postgresql
-    plan: turtle
+    plan: 100
 services:
-  - <your_database_server_name>
+  - stockdb

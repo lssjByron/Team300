@@ -16,10 +16,10 @@ if [ -z "$VCAP_APP_PORT" ];
   else SERVER_PORT="$VCAP_APP_PORT";
 fi
 
-echo [$0] port is------------------- $SERVER_PORT
+#echo [$0] port is------------------- $SERVER_PORT
 python manage.py makemigrations
 python manage.py migrate --no-input
-echo "from django.contrib.auth.models import User; User.objects.create_superuser('${USER}', '${MAIL}', '${PASS}')" | python manage.py shell
+#echo "from django.contrib.auth.models import User; User.objects.create_superuser('${USER}', '${MAIL}', '${PASS}')" | python manage.py shell
 
 echo [$0] Starting Django Server...
 python manage.py runserver 0.0.0.0:$SERVER_PORT --noreload

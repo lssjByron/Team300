@@ -16,22 +16,16 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-#from accounts import views as accounts_views
+from accounts import views as accounts_views
 from stocking import views
 urlpatterns = [
     #url(r'^signup/', signup_views.signup),
-    url(r'^$',  views.signup, name='signup'),
+    url(r'^$',  accounts_views.signup, name='signup'),
     url(r'^stocks/home$', views.home, name='home'),
-    url(r'^signup/$', views.signup, name='signup'),
+    url(r'^signup/$', accounts_views.signup, name='signup'),
+    #url(r'^login/$', auth_views.login, name='login'),
+   # url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
     url(r'^admin/', admin.site.urls),
 ]
-
-
-
-
-
-
-
-
