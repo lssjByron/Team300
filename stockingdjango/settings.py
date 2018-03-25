@@ -23,12 +23,12 @@ DATABASES = {
   }
 }
 
-DEBUG = True
+DEBUG = True #it`s advised to have DEBUG set to False during production, for security reasons.
 TEMPLATES = [
 {
     'BACKEND': 'django.template.backends.django.DjangoTemplates',
     'DIRS': [os.path.join(BASE_DIR, 'stocking/templates'),'templates'],
-    'APP_DIRS': True,
+    'APP_DIRS': False,
     'OPTIONS': {
         'debug': DEBUG,
         'context_processors': [
@@ -60,8 +60,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'stocking',
-    'widget_tweaks',
+   #'widget_tweaks',
 )
 
 MIDDLEWARE_CLASSES = (
