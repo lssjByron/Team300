@@ -63,6 +63,12 @@ INSTALLED_APPS = (
     'stocking',
     'accounts',
 )
+LOGIN_URL = ('/login/')
+LOGIN_EXEMPT_URLS = (
+    r'^$',
+    r'^signup/$',
+    r'^login/$',
+)
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -71,6 +77,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'accounts.middleware.AuthRequiredMiddleware',
 )
 
 ROOT_URLCONF = 'stockingdjango.urls'
@@ -120,4 +127,4 @@ STATICFILES_DIRS = (
 )
 
 LOGIN_REDIRECT_URL = '/stocks/home'
-LOGIN_URL='/auth/login/'
+#LOGIN_URL='/auth/login/'
