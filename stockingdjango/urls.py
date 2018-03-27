@@ -28,6 +28,10 @@ urlpatterns = [
     url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
     url(r'^admin/', admin.site.urls),
     url(r'^stocks/home2$', views.stockHistory),
+   # url(r'^stocks/home2$', views.symbolHistory),
+   # url(r'^stocks/home2$', views.symbolInfo),
+   # url(r'^stocks/home2$', views.riskAnalysis),
+
 ]
 
 
