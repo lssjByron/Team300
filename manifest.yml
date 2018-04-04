@@ -9,8 +9,9 @@ applications:
   buildpack: python_buildpack
   path: .
 declared-services:
-  cf-django-pgsql:
+  #your database server name will be an elephantsql
+  <your_database_server_name>:
     label: postgresql
     plan: turtle
 services:
-  - cf-django-pgsql
+  - <your_database_server_name>
