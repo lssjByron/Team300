@@ -2,9 +2,7 @@
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
-from stocking.forms import SignUpForm
 from django.conf import settings #Emerson added
-from stocking.forms import SignUpForm #Emerson
 from stocking.forms import SubmitStocks #Emerson
 from stocking.serializer import StockSerializer #Emerson
 import requests #Emerson added
@@ -45,11 +43,11 @@ def stockHistory(request, symbol='',high='',low=''):
 		new_dict['close'] = j_data[i]['close']
 		new_dict['high'] = j_data[i]['high']
 		new_dict['low'] = j_data[i]['low']
-		risk_data = StockServices.get_risk_analysis(j_data[i]['symbol'],new_dict['high'],new_dict['low'])
-		new_dict['rickMeasure'] = risk_data[0]['rickMeasure']
+		#risk_data = StockServices.get_risk_analysis(j_data[i]['symbol'],new_dict['high'],new_dict['low'])
+		#new_dict['rickMeasure'] = risk_data[0]['rickMeasure']
 		dict_of_dicts[j_data[i]['symbol']] = new_dict
 	stock_history = dict_of_dicts     
-	return render(request, 'stocks/home2.html', {'stock_history':stock_history})
+	return render(request, 'stocks/home.html', {'stock_history':stock_history})
 
 #include 'symbol' in url that is added to urls.py
 def symbolHistory(request,symbol):
@@ -87,11 +85,11 @@ def symbolInfo(request,symbol):
 		new_dict['close'] = j_data[i]['close']
 		new_dict['high'] = j_data[i]['high']
 		new_dict['low'] = j_data[i]['low']
-		dict_of_dicts[j_data[i]['symbol']] = new_dict	
+		dict_of_dicts[j_data[i]['symbol']] = new_dict
 
 	symbol_info = dict_of_dicts
 
-	return render(request, 'stocks/home2.html',{'symbol_info': symbol_info})
+	return render(request, 'stocks/home.html',{'symbol_info': symbol_info})
 
 
 def riskAnalysis(request,symbol,high,low):
@@ -112,4 +110,4 @@ def riskAnalysis(request,symbol,high,low):
 		#riskMetric
 		dict_of_dicts[j_data[i]['rickMeasure']] = new_dict
 	risk_analysis = dict_of_dicts
-	return render(request,'stocks/home2.html',{'risk_analysis':risk_analysis})
+	return render(request,'stocks/home.html',{'risk_analysis':risk_analysis})
