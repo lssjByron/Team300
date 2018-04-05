@@ -1,4 +1,4 @@
-
+import pdb
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
@@ -30,7 +30,7 @@ def signup(request):
 		form = SignUpForm()
 	return render(request, 'signup.html', {"form":form})
 
-def stockHistory(request):
+def stockHistory(request, symbol='',high='',low=''):
 	print("here")
 	# url = "https://stockserviceapiv04.mybluemix.net/api/stockhis?limit=40"
 	# response = requests.get(url, auth=('admin', 'password123'))
@@ -44,26 +44,11 @@ def stockHistory(request):
 		new_dict['close'] = j_data[i]['close']
 		new_dict['high'] = j_data[i]['high']
 		new_dict['low'] = j_data[i]['low']
+		risk_data = StockServices.get_risk_analysis(j_data[i]['symbol'],new_dict['high'],new_dict['low'])
+		new_dict['rickMeasure'] = risk_data[0]['rickMeasure']
 		dict_of_dicts[j_data[i]['symbol']] = new_dict
-
-	#right now the serialization process is being skipped.
-	serializer = StockSerializer(data=dict_of_dicts)
-	if serializer.is_valid():
-		print("koko")
-		stock = serializer.save()
-		return render(request, 'stocks/home2.html', {
-			'symbol': dict_of_dicts['symbol'],
-			'date': j_data[0]['date'],
-			'open': j_data[0]['open'],
-			'close': j_data[0]['close'],
-			'high': j_data[0]['high'],
-			'low': j_data[0]['low'],
-			'volume': j_data[0]['volume']
-			})
-	else:
-		print (serializer.errors)
-		stock_history = dict_of_dicts
-		return render(request, 'stocks/home2.html', {'stock_history':stock_history})
+	stock_history = dict_of_dicts     
+	return render(request, 'stocks/home2.html', {'stock_history':stock_history})
 
 #include 'symbol' in url that is added to urls.py
 def symbolHistory(request,symbol):
@@ -115,9 +100,10 @@ def riskAnalysis(request,symbol,high,low):
 		new_dict = {}
 		new_dict['rickMeasure'] = j_data[i]['rickMeasure']
 		new_dict['riskFactorsDescription'] = j_data[i]['riskFactorsDescription']
-		#symbolInfo
+		new_dict['symbolInfo'] = j_data[i]['symbolInfo']
 		#ticker_symbol
 		#company_name
+		new_dict['symbolInfo'] = j_data[i]['symbolInfo'][0]['company_name']
 		#gics_sector
 		#gics_sub_industry
 		#address
@@ -125,11 +111,4 @@ def riskAnalysis(request,symbol,high,low):
 		#riskMetric
 		dict_of_dicts[j_data[i]['rickMeasure']] = new_dict
 	risk_analysis = dict_of_dicts
-	return render(request,'stocks/home4.html',{'risk_analysis':risk_analysis})
-
-
-
-
-
-
-
+	return render(request,'stocks/home2.html',{'risk_analysis':risk_analysis})

@@ -53,7 +53,7 @@ body {
   <p>Some content..</p>
 </div>
 
-<DIV align=center 
+<DIV align=left 
 style=' 
 color: #000000; 
 background-color: #ffffff; 
@@ -76,12 +76,6 @@ scrollbar-arrow-color: #FFD6DA;
             document.getElementById('inputbox').style.display=n?'block':'none';     /* 点击按钮打开/关闭 对话框 */
         }
      </script> 
-<div id='inputbox' class="box">
-<a class='x' href=''; onclick="msgbox(0); return false;">Close</a>
-<input type="text">
-<input type="text">
-<input type="button" value="确定">
-</div>
 
 <table border="1">
 <tr>
@@ -89,11 +83,12 @@ scrollbar-arrow-color: #FFD6DA;
 <td>Symbol</td>
 <td>High</td>
 <td>Volume</td>
+<td>Risk</td>
 <td>Low</td>
 <td>Date</td>
 <td>Open</td>
 <td>Close</td>
-<td>    </td>
+
 </tr>
  {% for i in stock_history.items%}
                 <tr>
