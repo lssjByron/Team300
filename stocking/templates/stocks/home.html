@@ -69,24 +69,17 @@ scrollbar-track-color: #95A6AA;
 scrollbar-arrow-color: #FFD6DA;
 '>
 
-
-    <script>  
-        function msgbox(n){
-            document.getElementById('inputbox').style.display=n?'block':'none';     /* 点击按钮打开/关闭 对话框 */
-        }
-     </script> 
-
 <table border="1">
 <tr>
 <td>ID</td>
 <td>Symbol</td>
-<td>High</td>
+<td>High ($)</td>
 <td>Volume</td>
 <td>Risk</td>
-<td>Low</td>
+<td>Low ($)</td>
 <td>Date</td>
-<td>Open</td>
-<td>Close</td>
+<td>Open ($)</td>
+<td>Close ($)</td>
 
 </tr>
  {% for i in stock_history.items%}
@@ -99,7 +92,6 @@ scrollbar-arrow-color: #FFD6DA;
         {% endfor %}
         <td><a type="button" href="/stocks/history/{{i.0}} ">view history</a></td>
             {% endfor %}
-
 </table>
 </DIV>
 </body>
