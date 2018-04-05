@@ -63,25 +63,26 @@ scrollbar-arrow-color: #FFD6DA;
 '><table border="1">
 <tr>
 <td>Date</td>
-<td>Symble</td>
+<td>Symbol</td>
 <td>Open</td>
 <td>Close</td>
-<td>Hign</td>
+<td>High</td>
 <td>Low</td>
 <td>Volume</td>
 <td></td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
 <td>View</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
+<td>view</td>
 <td></td>
 <td></td>
 <td></td>
@@ -89,9 +90,9 @@ scrollbar-arrow-color: #FFD6DA;
 <td></td>
 <td></td>
 <td></td>
-<td>View</td>
 </tr>
 <tr>
+<td>view</td>
 <td></td>
 <td></td>
 <td></td>
@@ -99,9 +100,9 @@ scrollbar-arrow-color: #FFD6DA;
 <td></td>
 <td></td>
 <td></td>
-<td>View</td>
 </tr>
 <tr>
+<td>view</td>
 <td></td>
 <td></td>
 <td></td>
@@ -109,9 +110,9 @@ scrollbar-arrow-color: #FFD6DA;
 <td></td>
 <td></td>
 <td></td>
-<td>View</td>
 </tr>
 <tr>
+<td>view</td>
 <td></td>
 <td></td>
 <td></td>
@@ -119,9 +120,9 @@ scrollbar-arrow-color: #FFD6DA;
 <td></td>
 <td></td>
 <td></td>
-<td>View</td>
 </tr>
 <tr>
+<td>view</td>
 <td></td>
 <td></td>
 <td></td>
@@ -129,8 +130,14 @@ scrollbar-arrow-color: #FFD6DA;
 <td></td>
 <td></td>
 <td></td>
-<td>View</td>
 </tr>
+</table>
+<table>
+{% for key, value in symbol_history.items %}
+  <tr>
+    <td> {{key}}: </td> <td> {{value}} </td>
+  </tr>
+{% endfor %}
 </table>
 </DIV>
 </body>
