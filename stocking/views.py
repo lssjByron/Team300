@@ -42,8 +42,8 @@ def stockHistory(request, symbol='',high='',low=''):
 		new_dict['close'] = j_data[i]['close']
 		new_dict['high'] = j_data[i]['high']
 		new_dict['low'] = j_data[i]['low']
-		risk_data = StockServices.get_risk_analysis(j_data[i]['symbol'],new_dict['high'],new_dict['low'])
-		new_dict['rickMeasure'] = risk_data[0]['rickMeasure']
+		#risk_data = StockServices.get_risk_analysis(j_data[i]['symbol'],new_dict['high'],new_dict['low'])
+		#new_dict['rickMeasure'] = risk_data[0]['rickMeasure']
 		dict_of_dicts[j_data[i]['symbol']] = new_dict
 	stock_history = dict_of_dicts     
 	return render(request, 'stocks/home.html', {'stock_history':stock_history})

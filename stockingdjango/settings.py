@@ -126,3 +126,9 @@ STATICFILES_DIRS = (
 
 LOGIN_REDIRECT_URL = '/stocks/home'
 #LOGIN_URL='/auth/login/'
+
+LOGOUT_REDIRECT_URL = 'login'
+
+
+
+
