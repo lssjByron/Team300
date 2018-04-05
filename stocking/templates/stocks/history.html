@@ -35,22 +35,21 @@ body {
 <body>
 
 <div class="topnav">
-  <h1>Django app<h1>
+  <h1>DKITYSI<h1>
   <a class="active" href="#Name">Name</a>
   <a href="#logout">Logout</a>
 </div>
 
 <div style="padding-left:16px">
-  <h2>Top Navigation Example</h2>
-  <p>Some content..</p>
+  <h2>Stock History</h2>
 </div>
 
-<DIV align=center 
+<DIV align=left 
 style=' 
 color: #000000; 
 background-color: #ffffff; 
 border: solid 2px black; 
-width: 1920px; 
+width: auto; 
 height: 600px; 
 overflow: scroll; 
 scrollbar-face-color: #889B9F;
@@ -60,84 +59,25 @@ scrollbar-3dlight-color: #3D5054;
 scrollbar-darkshadow-color: #85989C;
 scrollbar-track-color: #95A6AA;
 scrollbar-arrow-color: #FFD6DA;
-'><table border="1">
+'>
+
+<table border="1">
 <tr>
-<td>Date</td>
-<td>Symbol</td>
-<td>Open</td>
-<td>Close</td>
 <td>High</td>
-<td>Low</td>
 <td>Volume</td>
-<td></td>
+<td>Low</td>
+<td>Date</td>
+<td>Close</td>
+<td>Open</td>
 </tr>
-<tr>
-<td>View</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>view</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>view</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>view</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>view</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>view</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</table>
-<table>
-{% for key, value in symbol_history.items %}
-  <tr>
-    <td> {{key}}: </td> <td> {{value}} </td>
-  </tr>
-{% endfor %}
+
+ {% for i in symbol_history.items%}
+                <tr>
+        {% for j in i.1.items%}
+                   <td>{{j.1}}</td>
+          
+        {% endfor %}
+ {% endfor %}
 </table>
 </DIV>
 </body>

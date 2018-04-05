@@ -43,14 +43,13 @@ body {
 <body>
 
 <div class="topnav">
-  <h1>Django app<h1>
+  <h1>DKITYSI<h1>
   <a class="active" href="#Name">Name</a>
   <a href="#logout">Logout</a>
 </div>
 
 <div style="padding-left:16px">
-  <h2>Top Navigation Example</h2>
-  <p>Some content..</p>
+  <h2>Stocks</h2>
 </div>
 
 <DIV align=left 
@@ -58,7 +57,7 @@ style='
 color: #000000; 
 background-color: #ffffff; 
 border: solid 2px black; 
-width: 1920px; 
+width: auto; 
 height: 600px; 
 overflow: scroll; 
 scrollbar-face-color: #889B9F;
@@ -98,7 +97,7 @@ scrollbar-arrow-color: #FFD6DA;
                    <td>{{j.1}}</td>
           
         {% endfor %}
-        <td><input type="button" onClick="msgbox(1)" value="view"></td>
+        <td><a type="button" href="/stocks/history/{{i.0}} ">view history</a></td>
             {% endfor %}
 
 </table>
