@@ -30,6 +30,14 @@ body {
   background-color: #4CAF50;
   color: white;
 }
+.box{
+    width:50%; margin-top:10%; margin:auto; padding:28px;
+    height:350px; border:1px #111 solid;
+    display:none;            
+}
+.box.show{display:block;} 
+.box .x{ font-size:18px; text-align:right; display:block;}
+.box input{width:80%; font-size:18px; margin-top:18px;}
 </style>
 </head>
 <body>
@@ -60,84 +68,44 @@ scrollbar-3dlight-color: #3D5054;
 scrollbar-darkshadow-color: #85989C;
 scrollbar-track-color: #95A6AA;
 scrollbar-arrow-color: #FFD6DA;
-'><table border="1">
+'>
+
+
+    <script>  
+        function msgbox(n){
+            document.getElementById('inputbox').style.display=n?'block':'none';     /* 点击按钮打开/关闭 对话框 */
+        }
+     </script> 
+<div id='inputbox' class="box">
+<a class='x' href=''; onclick="msgbox(0); return false;">Close</a>
+<input type="text">
+<input type="text">
+<input type="button" value="确定">
+</div>
+
+<table border="1">
 <tr>
-<td>Date</td>
+<td>ID</td>
 <td>Symbol</td>
+<td>High</td>
+<td>Volume</td>
+<td>Low</td>
+<td>Date</td>
 <td>Open</td>
 <td>Close</td>
-<td>High</td>
-<td>Low</td>
-<td>Volume</td>
-<td></td>
+<td>    </td>
 </tr>
-<tr>
-<td>View</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>view</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>view</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>view</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>view</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>view</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</table>
-<table>
-{% for key, value in stock_history.items %}
-  <tr>
-    <td> {{key}}: </td> <td> {{value}} </td>
-  </tr>
-{% endfor %}
+ {% for i in stock_history.items%}
+                <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.0 }}</td>
+        {% for j in i.1.items%}
+                   <td>{{j.1}}</td>
+          
+        {% endfor %}
+        <td><input type="button" onClick="msgbox(1)" value="view"></td>
+            {% endfor %}
+
 </table>
 </DIV>
 </body>

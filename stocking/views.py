@@ -66,13 +66,14 @@ def stockHistory(request):
 		return render(request, 'stocks/home2.html', {'stock_history':stock_history})
 
 #include 'symbol' in url that is added to urls.py
-def symbolHistory(request, symbol):
-	
+def symbolHistory(request,symbol):
 	j_data = StockServices.get_symbol_history(symbol)
 	dict_of_dicts = {}
-
+	#print(j_data)
+	print("length: ",len(j_data))
 	#correct what`s below for this method.
 	for i in range(0,len(j_data)):
+		print(i)
 		new_dict = {}
 		new_dict['volume'] = j_data[i]['volume']
 		new_dict['date'] = j_data[i]['date']
@@ -80,11 +81,11 @@ def symbolHistory(request, symbol):
 		new_dict['close'] = j_data[i]['close']
 		new_dict['high'] = j_data[i]['high']
 		new_dict['low'] = j_data[i]['low']
-		dict_of_dicts[j_data[i]['symbol']] = new_dict
-
+		dict_of_dicts[j_data[i]['date']] = new_dict
+	print("yopy")
 	symbol_history = dict_of_dicts
-
-	return render(request, 'stocks/home2.html',{'symbol_history':symbol_history})
+	#print(symbol_history)
+	return render(request, 'stocks/home3.html',{'symbol_history':symbol_history}) #<------------changed here
 
 #include 'symbol' in url that is added to urls.py
 def symbolInfo(request,symbol):
@@ -107,6 +108,28 @@ def symbolInfo(request,symbol):
 	return render(request, 'stocks/home2.html',{'symbol_info': symbol_info})
 
 
-#def riskAnalysis():
+def riskAnalysis(request,symbol,high,low):
+	j_data = StockServices.get_risk_analysis(symbol,high,low)
+	dict_of_dicts = {}
+	for i in range(0,len(j_data)):
+		new_dict = {}
+		new_dict['rickMeasure'] = j_data[i]['rickMeasure']
+		new_dict['riskFactorsDescription'] = j_data[i]['riskFactorsDescription']
+		#symbolInfo
+		#ticker_symbol
+		#company_name
+		#gics_sector
+		#gics_sub_industry
+		#address
+		#cik
+		#riskMetric
+		dict_of_dicts[j_data[i]['rickMeasure']] = new_dict
+	risk_analysis = dict_of_dicts
+	return render(request,'stocks/home4.html',{'risk_analysis':risk_analysis})
+
+
+
+
+
 
 

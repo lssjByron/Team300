@@ -10,7 +10,7 @@ def get_stock_history(limit=40):
 	return j_data
 
 def get_symbol_history(symbol):
-	url = "https://stockserviceapiv04.mybluemix.net/api/stockhis?symbol="+symbol
+	url = "https://stockserviceapiv04.mybluemix.net/api/symbolhis?symbol="+str(symbol)
 	response = requests.get(url, auth=('admin', 'password123'))
 	j_data = json.loads(response.text)
 	return j_data
@@ -21,4 +21,8 @@ def get_symbol_info(symbol):
 	j_data  = josn.loads(response.text)
 	return j_data
 
-#def get_risk_analysis(symbol,high,low):	
+def get_risk_analysis(symbol,high,low):	
+	url = "https://stockserviceapiv04.mybluemix.net/api/riskmetric?symbol="+symbol+"&currentHighPrice="+low+"&currentLowPrice="+low
+	response = requests.get(url, auth=('admin','password123'))
+	j_data = json.loads(response.text)
+	return j_data
