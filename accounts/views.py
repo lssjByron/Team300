@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from django.contrib.auth import login as auth_login
 from .forms import SignUpForm
 
 def signup(request):
